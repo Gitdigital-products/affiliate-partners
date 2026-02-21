@@ -1,0 +1,32 @@
+name: Affiliate Link Health Check
+
+on:
+  push:
+    paths:
+      - 'partners.json'
+  schedule:
+    - cron: '0 0 * * 1' # Runs every Monday at midnight
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate JSON Links
+        run: |
+          # Extract all "link" values from partners.json and test them
+          links=$(jq -r '.[].link' partners.json)
+          for link in $links; do
+            echo "Checking: $link"
+            status=$(curl -o /dev/null -s -w "%{http_code}" -L "$link")
+            if [ "$status" -ge 400 ]; then
+              echo "❌ BROKEN LINK: $link (Status: $status)"
+              exit 1
+            else
+              echo "✅ Link is active (Status: $status)"
+            fi
+          done
+          
