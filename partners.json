@@ -1,0 +1,15 @@
+[
+    {
+        "name": "Partner One",
+        "category": "Software",
+        "commission": "20%",
+        "link": "https://example.com/ref1"
+    },
+    {
+        "name": "Partner Two",
+        "category": "Marketing",
+        "commission": "15%",
+        "link": "https://example.com/ref2"
+    }
+]
+
