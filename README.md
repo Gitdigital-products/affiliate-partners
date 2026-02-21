@@ -1,3 +1,5 @@
+[![Link Check](https://github.com/Gitdigital-products/affiliate-partners/actions/workflows/link-checker.yml/badge.svg)](https://github.com/Gitdigital-products/affiliate-partners/actions)
+
 # affiliate-partners
 This is the repository for the GitHub apps affiliate partners 
 # 🤝 GitDigital Affiliate Partners
